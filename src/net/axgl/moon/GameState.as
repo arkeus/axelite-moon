@@ -1,7 +1,11 @@
 package net.axgl.moon {
 	import flash.utils.getTimer;
 	
+	import net.axgl.moon.assets.Resource;
+	
 	import org.axgl.Ax;
+	import org.axgl.AxRect;
+	import org.axgl.AxSprite;
 	import org.axgl.AxState;
 	import org.axgl.input.AxKey;
 	import org.axgl.input.AxMouseButton;
@@ -14,23 +18,15 @@ package net.axgl.moon {
 			//Ax.logger.info("one");
 			Ax.logger.warn("one");
 			Ax.logger.error("one");
-		}
-		
-		override public function update():void {
-			if (Ax.mouse.held(AxMouseButton.LEFT)) {
-				Ax.logger.info(getTimer() + " l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l l ");
-			}
-				
-			if (Ax.keys.pressed(AxKey.ONE)) {
-				Ax.debugger.console.reflow(AxDebugConsole.BOTTOM_LEFT_LAYOUT);
-			}
-			if (Ax.keys.pressed(AxKey.TWO)) {
-				Ax.debugger.console.reflow(AxDebugConsole.LEFT_SIDE_LAYOUT);
-			}
-			if (Ax.keys.pressed(AxKey.THREE)) {
-				Ax.debugger.console.reflow(AxDebugConsole.FULL_SCREEN_LAYOUT);
+			
+			for (var x:uint = 0; x < Ax.width; x += 12) {
+				this.add(new AxSprite(x, x * 2, Resource.PLAYER, 12, 24));
 			}
 			
+			Ax.camera.bounds = new AxRect(0, 0, Ax.viewWidth - 10, Ax.viewHeight - 10);
+		}
+		
+		override public function update():void {			
 			super.update();
 		}
 	}
