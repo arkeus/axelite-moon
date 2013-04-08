@@ -1,6 +1,8 @@
 package net.axgl.moon {
 	import flash.utils.getTimer;
 	
+	import net.axgl.lib.tiled.TiledReader;
+	import net.axgl.moon.assets.Map;
 	import net.axgl.moon.assets.Resource;
 	
 	import org.axgl.Ax;
@@ -14,19 +16,10 @@ package net.axgl.moon {
 
 	public class GameState extends AxState {
 		override public function create():void {
-			this.add(new AxText(50, 50, null, "Empty Project"));
-			//Ax.logger.info("one");
-			Ax.logger.warn("one");
-			Ax.logger.error("one");
-			
-			for (var x:uint = 0; x < Ax.width; x += 12) {
-				this.add(new AxSprite(x, x * 2, Resource.PLAYER, 12, 24));
-			}
-			
-			Ax.camera.bounds = new AxRect(0, 0, Ax.viewWidth - 10, Ax.viewHeight - 10);
+			trace(new TiledReader().loadFromEmbedded(Map.WORLD));
 		}
 		
-		override public function update():void {			
+		override public function update():void {
 			super.update();
 		}
 	}

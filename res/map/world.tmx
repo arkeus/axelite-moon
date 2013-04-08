@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="12" tileheight="12" backgroundcolor="#2163db">
+ <properties>
+  <property name="blank" value=""/>
+  <property name="key" value="value"/>
+  <property name="prop" value="teehee"/>
+ </properties>
+ <tileset firstgid="1" name="tileset" tilewidth="12" tileheight="12">
+  <properties>
+   <property name="awesomeness" value="4"/>
+  </properties>
+  <image source="../world/tiles.png" width="120" height="240"/>
+  <terraintypes>
+   <terrain name="collision" tile="-1"/>
+   <terrain name="type2" tile="-1">
+    <properties>
+     <property name="tp" value="1"/>
+    </properties>
+   </terrain>
+  </terraintypes>
+  <tile id="10" terrain="0,0,0,0">
+   <properties>
+    <property name="wow" value="even tiles have properties"/>
+   </properties>
+  </tile>
+  <tile id="11" terrain="0,0,,"/>
+  <tile id="12" terrain="0,0,0,0"/>
+  <tile id="13" terrain="0,0,0,0"/>
+  <tile id="14" terrain="0,0,0,0"/>
+  <tile id="15" terrain="0,0,0,0"/>
+  <tile id="20" terrain="0,0,0,0"/>
+  <tile id="22" terrain="0,0,0,0"/>
+  <tile id="23" terrain="0,0,0,0"/>
+  <tile id="25" terrain="0,0,0,0"/>
+  <tile id="30" terrain="0,0,0,0"/>
+  <tile id="31" terrain="0,0,0,0"/>
+  <tile id="32" terrain="0,0,0,0"/>
+  <tile id="34" terrain="0,0,,"/>
+  <tile id="56" terrain="0,0,0,0"/>
+  <tile id="57" terrain="0,0,0,0"/>
+  <tile id="76" terrain="1,,,"/>
+  <tile id="167" terrain=",,,1"/>
+ </tileset>
+ <tileset firstgid="201" name="cows" tilewidth="12" tileheight="12" spacing="4" margin="3">
+  <tileoffset x="1" y="2"/>
+  <image source="../entity/player.png" trans="a2ff4a" width="48" height="96"/>
+  <tile id="0">
+   <properties>
+    <property name="cow" value="lol"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="below" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1rsKgDAMRuHsXlBBHdX3f0nTwcl2aMAYyvng33uWtiIAAAAAAKAVna43bvjhvDmpYdFtxs0So2UVe8Oz3f3Ub3TQ8YVWOg7dJPaGUXe5nzovtZzGRWkAvJT+WxH+HzVKd3GE+7UGHbGU3hPeCgAAAHi6ASjkEIA=
+  </data>
+ </layer>
+ <layer name="ground" width="50" height="50" opacity="0.54">
+  <data encoding="base64" compression="zlib">
+   eJzt0UEOgjAURdFuB0yYiENhBY5dgbAQTQRWzSOpQ2OB1F+ae5IbBkzeT50DAAAAAABI21O9vvwrVOk7/W1RuJvvl7OqfZeoi7YJveOqKnf8OxafNzn6HcubNKqNNyequ/+OarIcstJDdaq3HrITd6SFO9KSyx25eavBegQAAAAAUzPcyxC3
+  </data>
+ </layer>
+ <layer name="above" width="50" height="50" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzjkKgEAQAMH9sYIHKLj6dCfeeGBQqqDzbg0AAAAYTdFcPZHgiM7qCfioLdqrJxLc0VM9AfBjS7RWTyS4ol49AQAAkOAFAEcFnw==
+  </data>
+ </layer>
+</map>
