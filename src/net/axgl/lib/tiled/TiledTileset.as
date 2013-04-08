@@ -45,8 +45,8 @@ package net.axgl.lib.tiled {
 		private static function loadTiles(tmx:XMLList):Object {
 			var tiles:Object = {};
 			
-			for (var i:uint = 0; i < tmx.terrain.length(); i++) {
-				var node:TiledTile = new TiledTile(tmx.tile[i]);
+			for (var i:uint = 0; i < tmx.length(); i++) {
+				var node:TiledTile = new TiledTile(tmx[i]);
 				tiles[node.id] = node;
 			}
 			

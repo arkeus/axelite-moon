@@ -60,7 +60,7 @@
    eJzt0UEOgjAURdFuB0yYiENhBY5dgbAQTQRWzSOpQ2OB1F+ae5IbBkzeT50DAAAAAABI21O9vvwrVOk7/W1RuJvvl7OqfZeoi7YJveOqKnf8OxafNzn6HcubNKqNNyequ/+OarIcstJDdaq3HrITd6SFO9KSyx25eavBegQAAAAAUzPcyxC3
   </data>
  </layer>
- <layer name="above" width="50" height="50" visible="0">
+ <layer name="above" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztzjkKgEAQAMH9sYIHKLj6dCfeeGBQqqDzbg0AAAAYTdFcPZHgiM7qCfioLdqrJxLc0VM9AfBjS7RWTyS4ol49AQAAkOAFAEcFnw==
   </data>

@@ -9,17 +9,19 @@ package net.axgl.lib.tiled {
 		public var backgroundColor:uint;
 		public var properties:TiledProperties;
 		public var tilesets:TiledTilesets;
+		public var layers:TiledLayers;
 		
 		public function TiledMap(tmx:XML) {
 			version = "@version" in tmx ? tmx.@version : "?";
 			orientation = "@orientation" in tmx ? tmx.@orientation : "othogonal";
 			width = tmx.@width;
 			height = tmx.@height;
-			tileWidth = tmx.@tileWidth;
-			tileHeight = tmx.@tileHeight;
+			tileWidth = tmx.@tilewidth;
+			tileHeight = tmx.@tileheight;
 			backgroundColor = "@backgroundcolor" in tmx ? TiledUtils.colorStringToUint(tmx.@backgroundcolor) : 0xffffff;
 			properties = new TiledProperties(tmx.properties);
 			tilesets = new TiledTilesets(tmx.tileset);
+			layers = new TiledLayers(tmx.layer);
 		}
 		
 		/**
@@ -37,7 +39,8 @@ package net.axgl.lib.tiled {
 				"TileHeight: " + tileHeight,
 				"BackgroundColor: " + backgroundColor,
 				"Properties: " + properties,
-				"Tilesets: " + tilesets
+				"Tilesets: " + tilesets,
+				"Layers: " + layers,
 			].join(", ");
 		}
 	}

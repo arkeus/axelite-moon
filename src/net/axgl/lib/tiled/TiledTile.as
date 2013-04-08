@@ -17,10 +17,9 @@ package net.axgl.lib.tiled {
 		public var properties:TiledProperties;
 		public var image:TiledImage;
 		
-		public function TiledTile(tmx:XMLList) {
+		public function TiledTile(tmx:XML) {
 			id = tmx.@id;
 			terrain = csvToTerrain(tmx.@terrain);
-			trace(id, "TERRAIN", terrain);
 			probability = "@probability" in tmx ? tmx.@probability : Number.NaN;
 			properties = new TiledProperties(tmx.properties);
 			image = new TiledImage(tmx.image);
