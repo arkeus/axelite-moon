@@ -6,6 +6,7 @@ package net.axgl.moon {
 	import net.axgl.lib.tiled.TiledReader;
 	import net.axgl.moon.assets.Map;
 	import net.axgl.moon.assets.Resource;
+	import net.axgl.moon.entity.Player;
 	
 	import org.axgl.Ax;
 	import org.axgl.AxRect;
@@ -19,6 +20,8 @@ package net.axgl.moon {
 	import org.axgl.util.debug.AxDebugConsole;
 
 	public class GameState extends AxState {
+		private var player:Player;
+		
 		override public function create():void {
 			var map:TiledMap = new TiledReader().loadFromEmbedded(Map.WORLD);
 			for each(var layer:TiledLayer in map.layers.getVisibleLayers()) {
@@ -27,22 +30,12 @@ package net.axgl.moon {
 				this.add(tilemap);
 			}
 			Ax.background = AxColor.fromHex(map.backgroundColor);
+			
+			this.add(player = new Player(300, 300));
+			Ax.camera.follow(player);
 		}
 		
-		override public function update():void {
-			if (Ax.keys.held(AxKey.RIGHT)) {
-				Ax.camera.x += 10;
-			} else if (Ax.keys.held(AxKey.LEFT)) {
-				Ax.camera.x -= 10;
-			}
-			
-			if (Ax.keys.held(AxKey.DOWN)) {
-				Ax.camera.y += 10;
-			} else if (Ax.keys.held(AxKey.UP)) {
-				Ax.camera.y -= 10;
-			}
-			
-			super.update();
+		override public function update():void {super.update();
 		}
 	}
 }
