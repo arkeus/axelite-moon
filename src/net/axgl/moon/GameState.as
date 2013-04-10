@@ -7,6 +7,7 @@ package net.axgl.moon {
 	import net.axgl.moon.assets.Map;
 	import net.axgl.moon.assets.Resource;
 	import net.axgl.moon.entity.Player;
+	import net.axgl.moon.world.World;
 	
 	import org.axgl.Ax;
 	import org.axgl.AxRect;
@@ -21,21 +22,23 @@ package net.axgl.moon {
 
 	public class GameState extends AxState {
 		private var player:Player;
+		private var world:World;
 		
 		override public function create():void {
 			var map:TiledMap = new TiledReader().loadFromEmbedded(Map.WORLD);
-			for each(var layer:TiledLayer in map.layers.getVisibleLayers()) {
-				var tilemap:AxTilemap = new AxTilemap;
-				tilemap.build(layer.data, Resource.TILESET, map.tileWidth, map.tileHeight, 0);
-				this.add(tilemap);
-			}
-			Ax.background = AxColor.fromHex(map.backgroundColor);
-			
+			this.add(world = new World().build(map));
 			this.add(player = new Player(300, 300));
 			Ax.camera.follow(player);
 		}
 		
-		override public function update():void {super.update();
+		override public function update():void {
+			if (Ax.keys.pressed(AxKey.SPACE)) {
+				world.collision.setGraphic(Resource.COLLISION_TILESET_RED);
+			}
+			
+			super.update();
+			
+			Ax.collide(player, world.collision);
 		}
 	}
 }
