@@ -15,9 +15,13 @@ package net.axgl.moon.world {
 	public class World extends AxGroup {
 		private static const TILESET_NAME:String = "tileset";
 		private static const COLLISION_TERRAIN_NAME:String = "collision";
+		private static const COLLISION_OVERRIDE_FLAG:String = "override";
 		
 		public var collision:CollisionMap;
 		public var tilemaps:Vector.<AxTilemap>; // not needed?
+		
+		private var collisionFlagMap:Vector.<uint>;
+		private var collisionOverrideMap:Vector.<Boolean>;
 		
 		public function World() {
 			tilemaps = new Vector.<AxTilemap>;
@@ -32,7 +36,7 @@ package net.axgl.moon.world {
 			}
 			Ax.background = AxColor.fromHex(map.backgroundColor);
 			
-			var collisionFlagMap:Vector.<uint> = createCollisionFlagMap(map);
+			createCollisionMaps(map);
 			collision = new CollisionMap(map.width, map.height);
 			for each(layer in map.layers.getAllLayers()) {
 				applyCollision(layer.data, collisionFlagMap);
@@ -43,9 +47,11 @@ package net.axgl.moon.world {
 			return this;
 		}
 		
-		private function createCollisionFlagMap(map:TiledMap):Vector.<uint> {
-			var cfm:Vector.<uint> = new Vector.<uint>;
+		private function createCollisionMaps(map:TiledMap):void {
 			var tileset:TiledTileset = map.tilesets.getTilesetByName(TILESET_NAME);
+			
+			collisionFlagMap = new Vector.<uint>;
+			collisionOverrideMap = new Vector.<Boolean>;
 			
 			var cid:int = -1, i:uint = 0;
 			for (var t:String in tileset.terrain) {
@@ -62,41 +68,24 @@ package net.axgl.moon.world {
 			
 			for (var tid:String in tileset.tiles) {
 				var tidInt:uint = parseInt(tid);
-				if (cfm.length <= tidInt) {
-					cfm.length = tidInt + 1;
+				if (collisionFlagMap.length <= tidInt) {
+					collisionOverrideMap.length = collisionFlagMap.length = tidInt + 1;
 				}
-				cfm[parseInt(tid)] = TERRAIN_TO_SIDE_MAP[(tileset.tiles[tid] as TiledTile).terrain];
+				collisionFlagMap[tidInt] = TERRAIN_TO_SIDE_MAP[(tileset.tiles[tid] as TiledTile).terrain];
+				collisionOverrideMap[tidInt] = (tileset.tiles[tid] as TiledTile).properties.get("collisionType") == COLLISION_OVERRIDE_FLAG;
 			}
-			
-			return cfm;
-		}
-		
-		private function terrainToCollisionFlag(terrain:String, cid:String):uint {
-			var t:Array = terrain.split(",");
-			if (t.length != 4) {
-				throw new Error("Invalid terrain: " + terrain);
-			}
-			var flag:uint = 0;
-			if (t[0] == cid && t[1] == cid) {
-				flag |= UP;
-			}
-			if (t[2] == cid && t[3] == cid) {
-				flag |= DOWN;
-			}
-			if (t[0] == cid && t[2] == cid) {
-				flag |= LEFT;
-			}
-			if (t[1] == cid && t[3] == cid) {
-				flag |= RIGHT;
-			}
-			return flag;
 		}
 		
 		private function applyCollision(data:Array, collisionFlagMap:Vector.<uint>):void {
 			for (var y:uint = 0; y < data.length; y++) {
 				for (var x:uint = 0; x < data[y].length; x++) {
 					if (data[y][x] > 0) {
-						collision.set(x, y, collisionFlagMap[data[y][x] - 1]);
+						var tid:uint = data[y][x] - 1;
+						if (collisionOverrideMap[tid]) {
+							collision.set(x, y, collisionFlagMap[data[y][x] - 1]);
+						} else {
+							collision.apply(x, y, collisionFlagMap[data[y][x] - 1]);
+						}
 					}
 				}
 			}

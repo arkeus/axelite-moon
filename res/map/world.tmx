@@ -11,7 +11,7 @@
   </properties>
   <image source="../world/tiles.png" width="120" height="240"/>
   <terraintypes>
-   <terrain name="collision" tile="-1"/>
+   <terrain name="collision" tile="102"/>
   </terraintypes>
   <tile id="10" terrain="0,0,0,0">
    <properties>
@@ -47,8 +47,38 @@
   <tile id="61" terrain="0,0,0,0"/>
   <tile id="62" terrain="0,0,0,0"/>
   <tile id="64" terrain="0,0,,"/>
+  <tile id="70" terrain="0,0,,">
+   <properties>
+    <property name="collisionType" value="override"/>
+   </properties>
+  </tile>
   <tile id="76" terrain="0,0,0,0"/>
+  <tile id="80">
+   <properties>
+    <property name="collisionType" value="override"/>
+   </properties>
+  </tile>
   <tile id="86" terrain="0,0,0,0"/>
+  <tile id="90" terrain=",,0,0">
+   <properties>
+    <property name="collisionType" value="override"/>
+   </properties>
+  </tile>
+  <tile id="100" terrain="0,,0,">
+   <properties>
+    <property name="collisionType" value="override"/>
+   </properties>
+  </tile>
+  <tile id="101">
+   <properties>
+    <property name="collisionType" value="override"/>
+   </properties>
+  </tile>
+  <tile id="102" terrain=",0,,0">
+   <properties>
+    <property name="collisionType" value="override"/>
+   </properties>
+  </tile>
   <tile id="130" terrain="0,0,0,0"/>
   <tile id="131" terrain="0,0,0,0"/>
   <tile id="132" terrain="0,0,0,0"/>

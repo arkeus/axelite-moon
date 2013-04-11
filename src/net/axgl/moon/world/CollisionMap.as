@@ -19,6 +19,10 @@ package net.axgl.moon.world {
 		}
 		
 		public function set(x:uint, y:uint, flag:uint):void {
+			collision[y][x] = flag;
+		}
+		
+		public function apply(x:uint, y:uint, flag:uint):void {
 			collision[y][x] |= flag;
 		}
 		
