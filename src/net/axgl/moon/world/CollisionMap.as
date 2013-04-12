@@ -28,6 +28,12 @@ package net.axgl.moon.world {
 		
 		public function initialize():void {
 			build(collision, Resource.COLLISION_TILESET, Tile.SIZE, Tile.SIZE, 1);
+			
+			for (var i:uint = 1; i <= 16; i++) {
+				trace(tiles[i].collision);
+				tiles[i].collision = i;
+				trace(ANY, i-1);
+			}
 		}
 	}
 }

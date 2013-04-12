@@ -17,6 +17,11 @@ package net.axgl.moon.entity {
 			addAnimation("stand_down", [0, 3], 2);
 			addAnimation("stand_up", [4, 7], 2);
 			addAnimation("stand_side", [8, 11], 2);
+			
+			width = 9;
+			height = 7;
+			offset.y = 17;
+			offset.x = 1;
 		}
 		
 		override public function update():void {

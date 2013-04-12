@@ -33,7 +33,8 @@ package net.axgl.moon {
 		
 		override public function update():void {
 			if (Ax.keys.pressed(AxKey.SPACE)) {
-				world.collision.setGraphic(Resource.COLLISION_TILESET_RED);
+				//world.collision.setGraphic(Resource.COLLISION_TILESET_RED);
+				trace(player.x);
 			}
 			
 			super.update();
