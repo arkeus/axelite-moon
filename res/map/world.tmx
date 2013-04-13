@@ -64,6 +64,9 @@
     <property name="collisionType" value="override"/>
    </properties>
   </tile>
+  <tile id="94" terrain="0,0,0,"/>
+  <tile id="95" terrain="0,0,,"/>
+  <tile id="96" terrain="0,0,,0"/>
   <tile id="100" terrain="0,,0,">
    <properties>
     <property name="collisionType" value="override"/>
@@ -79,6 +82,8 @@
     <property name="collisionType" value="override"/>
    </properties>
   </tile>
+  <tile id="104" terrain="0,,0,0"/>
+  <tile id="105" terrain=",,0,0"/>
   <tile id="106" terrain=",0,0,0"/>
   <tile id="130" terrain="0,0,0,0"/>
   <tile id="131" terrain="0,0,0,0"/>
@@ -113,7 +118,7 @@
  </layer>
  <layer name="ground" width="50" height="50" opacity="0.54">
   <data encoding="base64" compression="zlib">
-   eJzt0UEKgkAYhuG5TgpttKV1AteeQF10jILKU/cJ40YcymKccXgfeBFx8/1oDAAAAAAAQNxu6u74dlCZLd9s0fdq2yeFKm0nr4t+47rjOnuv1NHs744l0z/Z+x3jPzmri785XjX2+VJDyCErtapTfeghf+KOuHBHXFK5IzUP9Qw9AgAAAEBQb4SOESI=
+   eJzt0bEKgzAAhOG8ji24WEf1CTo7dmo7+BgWrH3qnhBBBNEqaaL8HxwRzHBHjAEAAAAAAAhbrbwm/kXKyeb8t0bLXW3mJMrFJnXaaJ3xjtvEvUyJzX52jFWD7/5N9rhjqHuTXCnc1XGqtGerfHwW+dFdeShP30U2YkdY2BGWo+w4mkZ5+y4BAAAAwKsv38sRgQ==
   </data>
  </layer>
  <layer name="above" width="50" height="50">
