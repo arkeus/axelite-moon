@@ -1,7 +1,6 @@
 package net.axgl.moon.world {
 	import net.axgl.moon.assets.Resource;
 	
-	import org.axgl.tilemap.AxTile;
 	import org.axgl.tilemap.AxTilemap;
 
 	public class CollisionMap extends AxTilemap {
