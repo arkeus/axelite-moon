@@ -21,7 +21,23 @@ package net.axgl.lib.tiled {
 			backgroundColor = "@backgroundcolor" in tmx ? TiledUtils.colorStringToUint(tmx.@backgroundcolor) : 0xffffff;
 			properties = new TiledProperties(tmx.properties);
 			tilesets = new TiledTilesets(tmx.tileset);
-			layers = new TiledLayers(tmx.layer);
+			parseLayers(tmx);
+		}
+		
+		private function parseLayers(tmx:XML):void {
+			layers = new TiledLayers;
+			
+			// Parse all children, since for some reason layer and objectgroup aren't grouped easily, even though the ordering
+			// between them can be very important
+			var elements:XMLList = tmx.children();
+			for (var i:uint = 0; i < elements.length(); i++) {
+				var name:QName = (elements[i] as XML).name();
+				if (name.localName == "layer") {
+					layers.addLayer(new TiledTileLayer(elements[i]));
+				} else if (name.localName == "objectgroup") {
+					layers.addLayer(new TiledObjectLayer(elements[i]));
+				}
+			}
 		}
 		
 		/**

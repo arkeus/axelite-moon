@@ -1,8 +1,9 @@
 package net.axgl.moon.world {
 	import net.axgl.lib.tiled.TiledLayer;
 	import net.axgl.lib.tiled.TiledMap;
-	import net.axgl.lib.tiled.TiledTerrain;
+	import net.axgl.lib.tiled.TiledObjectLayer;
 	import net.axgl.lib.tiled.TiledTile;
+	import net.axgl.lib.tiled.TiledTileLayer;
 	import net.axgl.lib.tiled.TiledTileset;
 	import net.axgl.moon.assets.Resource;
 	
@@ -10,7 +11,6 @@ package net.axgl.moon.world {
 	import org.axgl.AxGroup;
 	import org.axgl.render.AxColor;
 	import org.axgl.tilemap.AxTilemap;
-	import org.axgl.util.AxProfiler;
 
 	public class World extends AxGroup {
 		private static const TILESET_NAME:String = "tileset";
@@ -29,17 +29,22 @@ package net.axgl.moon.world {
 		
 		public function build(map:TiledMap):World {
 			for each(var layer:TiledLayer in map.layers.getVisibleLayers()) {
-				var tilemap:AxTilemap = new AxTilemap;
-				tilemap.build(layer.data, Resource.TILESET, map.tileWidth, map.tileHeight, 0);
-				this.add(tilemap);
-				tilemaps.push(tilemap);
+				if (layer is TiledTileLayer) {
+					var tilemap:AxTilemap = new AxTilemap;
+					var tileLayer:TiledTileLayer = layer as TiledTileLayer;
+					tilemap.build(tileLayer.data, Resource.TILESET, map.tileWidth, map.tileHeight, 0);
+					this.add(tilemap);
+					tilemaps.push(tilemap);
+				} else if (layer is TiledObjectLayer) {
+					
+				}
 			}
 			Ax.background = AxColor.fromHex(map.backgroundColor);
 			
 			createCollisionMaps(map);
 			collision = new CollisionMap(map.width, map.height);
-			for each(layer in map.layers.getAllLayers()) {
-				applyCollision(layer.data, collisionFlagMap);
+			for each(layer in map.layers.getTileLayers()) {
+				applyCollision((layer as TiledTileLayer).data, collisionFlagMap);
 			}
 			this.add(collision);
 			collision.initialize();

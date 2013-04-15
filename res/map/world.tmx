@@ -9,7 +9,7 @@
   <properties>
    <property name="awesomeness" value="4"/>
   </properties>
-  <image source="../world/tiles.png" width="120" height="240"/>
+  <image source="../../../../Axel/AxeliteMoon/res/world/tiles.png" width="120" height="240"/>
   <terraintypes>
    <terrain name="collision" tile="102"/>
   </terraintypes>
@@ -104,7 +104,7 @@
  </tileset>
  <tileset firstgid="201" name="cows" tilewidth="12" tileheight="12" spacing="4" margin="3">
   <tileoffset x="1" y="2"/>
-  <image source="../entity/player.png" trans="a2ff4a" width="48" height="96"/>
+  <image source="../../../../Axel/AxeliteMoon/res/entity/player.png" trans="a2ff4a" width="48" height="96"/>
   <tile id="0">
    <properties>
     <property name="cow" value="lol"/>
@@ -117,10 +117,21 @@
   </data>
  </layer>
  <layer name="ground" width="50" height="50" opacity="0.54">
+  <properties>
+   <property name="fucking" value="properties"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt0bEKgzAAhOG8ji24WEf1CTo7dmo7+BgWrH3qnhBBBNEqaaL8HxwRzHBHjAEAAAAAAAhbrbwm/kXKyeb8t0bLXW3mJMrFJnXaaJ3xjtvEvUyJzX52jFWD7/5N9rhjqHuTXCnc1XGqtGerfHwW+dFdeShP30U2YkdY2BGWo+w4mkZ5+y4BAAAAwKsv38sRgQ==
   </data>
  </layer>
+ <objectgroup name="objects" width="50" height="50">
+  <object name="player_spawn" type="player_spawn" gid="1" x="300" y="312"/>
+  <object type="trace_area" x="294" y="256" width="46" height="21">
+   <properties>
+    <property name="text" value="inSIDE"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="above" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztzjkKgEAQAMH9sYIHKLj6dCfeeGBQqqDzbg0AAAAYTdFcPZHgiM7qCfioLdqrJxLc0VM9AfBjS7RWTyS4ol49AQAAkOAFAEcFnw==

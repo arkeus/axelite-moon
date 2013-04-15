@@ -5,10 +5,7 @@ package net.axgl.lib.tiled {
 		public var height:uint;
 		public var opacity:Number;
 		public var visible:Boolean;
-		
-		public var encoding:String;
-		public var compression:String;
-		public var data:Array;
+		public var properties:TiledProperties;
 		
 		public function TiledLayer(tmx:XML) {
 			name = tmx.@name;
@@ -16,12 +13,7 @@ package net.axgl.lib.tiled {
 			height = tmx.@height;
 			opacity = "@opacity" in tmx ? tmx.@opacity : 1.0;
 			visible = !("@visible" in tmx && tmx.@visible == "0");
-			
-			var dataNode:XML = tmx.data[0];
-			encoding = "@encoding" in dataNode ? dataNode.@encoding : null;
-			compression = "@compression" in dataNode ? dataNode.@compression : null;
-			data = TiledUtils.stringToTileData(dataNode.text(), width, encoding, compression);
-			
+			properties = new TiledProperties(tmx.properties);
 		}
 	}
 }

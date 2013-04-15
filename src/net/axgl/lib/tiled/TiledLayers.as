@@ -2,15 +2,12 @@ package net.axgl.lib.tiled {
 	public class TiledLayers {
 		public var layers:Vector.<TiledLayer>;
 		
-		public function TiledLayers(tmx:XMLList) {
+		public function TiledLayers() {
 			layers = new Vector.<TiledLayer>;
-			for (var i:uint = 0; i < tmx.length(); i++) {
-				addLayer(tmx[i]);
-			}
 		}
 		
-		private function addLayer(tmx:XML):void {
-			layers.push(new TiledLayer(tmx));
+		public function addLayer(layer:TiledLayer):void {
+			layers.push(layer);
 		}
 		
 		public function getAllLayers():Vector.<TiledLayer> {
@@ -19,6 +16,10 @@ package net.axgl.lib.tiled {
 		
 		public function getVisibleLayers():Vector.<TiledLayer> {
 			return layers.filter(function(el:TiledLayer, i:int, arr:Vector.<TiledLayer>):Boolean { return el.visible; });
+		}
+		
+		public function getTileLayers():Vector.<TiledLayer> {
+			return layers.filter(function(el:TiledLayer, i:int, arr:Vector.<TiledLayer>):Boolean { return el is TiledTileLayer; });
 		}
 		
 		public function get length():uint {
