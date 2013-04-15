@@ -4,7 +4,7 @@ package net.axgl.lib.tiled {
 		public function TiledObjectLayer(tmx:XML) {
 			super(tmx);
 			
-			// do objecty stuff
+			// TODO: do objecty stuff
 		}
 	}
 }
