@@ -1,11 +1,13 @@
 package net.axgl.moon.world {
 	import net.axgl.lib.tiled.TiledLayer;
 	import net.axgl.lib.tiled.TiledMap;
+	import net.axgl.lib.tiled.TiledObject;
 	import net.axgl.lib.tiled.TiledObjectLayer;
 	import net.axgl.lib.tiled.TiledTile;
 	import net.axgl.lib.tiled.TiledTileLayer;
 	import net.axgl.lib.tiled.TiledTileset;
 	import net.axgl.moon.assets.Resource;
+	import net.axgl.moon.entity.Player;
 	
 	import org.axgl.Ax;
 	import org.axgl.AxGroup;
@@ -16,6 +18,8 @@ package net.axgl.moon.world {
 		private static const TILESET_NAME:String = "tileset";
 		private static const COLLISION_TERRAIN_NAME:String = "collision";
 		private static const COLLISION_OVERRIDE_FLAG:String = "override";
+		
+		public var player:Player;
 		
 		public var collision:CollisionMap;
 		public var tilemaps:Vector.<AxTilemap>; // not needed?
@@ -36,7 +40,7 @@ package net.axgl.moon.world {
 					this.add(tilemap);
 					tilemaps.push(tilemap);
 				} else if (layer is TiledObjectLayer) {
-					
+					parseObjectLayer(layer as TiledObjectLayer);
 				}
 			}
 			Ax.background = AxColor.fromHex(map.backgroundColor);
@@ -94,6 +98,11 @@ package net.axgl.moon.world {
 					}
 				}
 			}
+		}
+		
+		private function parseObjectLayer(layer:TiledObjectLayer):void {
+			var playerObject:TiledObject = layer.getObjectByName("player_spawn");
+			this.add(player = new Player(playerObject.x, playerObject.y));
 		}
 		
 		private static const TERRAIN_TO_SIDE_MAP:Vector.<uint> = new <uint>[

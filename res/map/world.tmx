@@ -125,7 +125,7 @@
   </data>
  </layer>
  <objectgroup name="objects" width="50" height="50">
-  <object name="player_spawn" type="player_spawn" gid="1" x="300" y="312"/>
+  <object name="player_spawn" type="player_spawn" gid="1" x="252" y="324"/>
   <object type="trace_area" x="294" y="256" width="46" height="21">
    <properties>
     <property name="text" value="inSIDE"/>
