@@ -36,6 +36,8 @@ package net.axgl.lib.tiled {
 					layers.addLayer(new TiledTileLayer(elements[i]));
 				} else if (name.localName == "objectgroup") {
 					layers.addLayer(new TiledObjectLayer(elements[i]));
+				} else if (name.localName == "imagelayer") {
+					layers.addLayer(new TiledImageLayer(elements[i]));
 				}
 			}
 		}

@@ -1,7 +1,6 @@
 package net.axgl.moon.world {
 	import net.axgl.lib.tiled.TiledLayer;
 	import net.axgl.lib.tiled.TiledMap;
-	import net.axgl.lib.tiled.TiledObject;
 	import net.axgl.lib.tiled.TiledObjectLayer;
 	import net.axgl.lib.tiled.TiledTile;
 	import net.axgl.lib.tiled.TiledTileLayer;
@@ -101,8 +100,7 @@ package net.axgl.moon.world {
 		}
 		
 		private function parseObjectLayer(layer:TiledObjectLayer):void {
-			var playerObject:TiledObject = layer.getObjectByName("player_spawn");
-			this.add(player = new Player(playerObject.x, playerObject.y));
+			new ObjectHandler(layer.objects).build(this);
 		}
 		
 		private static const TERRAIN_TO_SIDE_MAP:Vector.<uint> = new <uint>[

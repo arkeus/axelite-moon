@@ -111,6 +111,9 @@
    </properties>
   </tile>
  </tileset>
+ <imagelayer name="image" width="50" height="50">
+  <image source="../../../../Documents/Diablo III/Screenshots/Screenshot000.jpg" trans="28a491"/>
+ </imagelayer>
  <layer name="below" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJzt1rsKgDAMRuHsXlBBHdX3f0nTwcl2aMAYyvng33uWtiIAAAAAAKAVna43bvjhvDmpYdFtxs0So2UVe8Oz3f3Ub3TQ8YVWOg7dJPaGUXe5nzovtZzGRWkAvJT+WxH+HzVKd3GE+7UGHbGU3hPeCgAAAHi6ASjkEIA=
@@ -130,6 +133,15 @@
    <properties>
     <property name="text" value="inSIDE"/>
    </properties>
+  </object>
+  <object name="circle" type="circle" x="200" y="223" width="52" height="35">
+   <ellipse/>
+  </object>
+  <object name="spaceship" type="spaceship" x="399" y="198">
+   <polygon points="0,0 -37,19 1,38 -34,59 28,65 48,15"/>
+  </object>
+  <object name="zig" type="zag" x="241" y="378">
+   <polyline points="0,0 30,-18 76,-2 110,-19 153,1"/>
   </object>
  </objectgroup>
  <layer name="above" width="50" height="50">

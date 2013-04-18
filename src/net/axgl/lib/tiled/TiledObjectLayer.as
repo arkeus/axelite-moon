@@ -25,7 +25,7 @@ package net.axgl.lib.tiled {
 			}
 		}
 		
-		public function getObject(index:uint):TiledObject {
+		public function getObjectByIndex(index:uint):TiledObject {
 			return objects[index];
 		}
 		
