@@ -24,6 +24,8 @@ package net.axgl.lib.tiled {
 		public var width:uint;
 		/** The height of the object. */
 		public var height:uint;
+		/** Whether or not this object is visible. */
+		public var visible:Boolean;
 		/** The properties of the object. */
 		public var properties:TiledProperties;
 		/** The shape of the object, represented by TiledObject constants. */
@@ -39,6 +41,7 @@ package net.axgl.lib.tiled {
 			y = tmx.@y;
 			width = "@width" in tmx ? tmx.@width : 0;
 			height = "@height" in tmx ? tmx.@height : 0;
+			visible = !("@visible" in tmx && tmx.@visible == "0");
 			properties = new TiledProperties(tmx.properties);
 			shape = RECTANGLE;
 			

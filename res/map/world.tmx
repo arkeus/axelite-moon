@@ -137,7 +137,7 @@
   <object name="circle" type="circle" x="200" y="223" width="52" height="35">
    <ellipse/>
   </object>
-  <object name="spaceship" type="spaceship" x="399" y="198">
+  <object name="spaceship" type="spaceship" x="399" y="198" visible="0">
    <polygon points="0,0 -37,19 1,38 -34,59 28,65 48,15"/>
   </object>
   <object name="zig" type="zag" x="241" y="378">
