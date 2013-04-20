@@ -1,21 +1,34 @@
 package net.axgl.lib.tiled {
 	import flash.geom.Point;
 
+	/**
+	 * Represents a single <object> within an <objectgroup> in the map.
+	 */
 	public class TiledObject {
 		public static const RECTANGLE:uint = 0;
 		public static const ELLIPSE:uint = 1;
 		public static const POLYGON:uint = 2;
 		public static const POLYLINE:uint = 3;
 		
+		/** The name of the object. If unique, can be used to find the object by name. */
 		public var name:String;
+		/** The type of the object. Can find all objects of a given type using this value. */
 		public var type:String;
+		/** The global tile id of the object, if the object is a tile object. Otherwise, 0. */
 		public var gid:uint;
+		/** The x value of the object. */
 		public var x:int;
+		/** The y value of the object. */
 		public var y:int;
+		/** The width of the object. */
 		public var width:uint;
+		/** The height of the object. */
 		public var height:uint;
+		/** The properties of the object. */
 		public var properties:TiledProperties;
+		/** The shape of the object, represented by TiledObject constants. */
 		public var shape:uint;
+		/** A vector of points, if the object is a polygon or polyline. */
 		public var points:Vector.<Point>;
 		
 		public function TiledObject(tmx:XML) {
@@ -40,6 +53,10 @@ package net.axgl.lib.tiled {
 			}
 		}
 		
+		/**
+		 * Given a space separate list of comma separate points, converts them into a
+		 * vector of points.
+		 */
 		private function populatePoints(pointString:String):void {
 			points = new Vector.<Point>;
 			var pointArray:Array = pointString.split(" ");
