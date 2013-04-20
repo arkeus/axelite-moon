@@ -1,18 +1,31 @@
 package net.axgl.lib.tiled {
 	import flash.geom.Point;
 
+	/**
+	 * A container holding properties for a single tileset within the map.
+	 */
 	public class TiledTileset {
+		/** The first global tile id in the tileset. */
 		public var firstGid:uint;
+		/** The name of the tilset. */
 		public var name:String;
+		/** The maximum width of tiles in this tileset. */
 		public var tileWidth:uint;
+		/** The maximum height of tiles in this tileset. */
 		public var tileHeight:uint;
+		/** The spacing, in pixels, between the tiles in this tileset. */
 		public var spacing:uint;
+		/** The margin around the tiles in this tileset. */
 		public var margin:uint;
+		/** The offset, in pixels, for the tiles in this tileset. */
 		public var tileOffset:Point;
-		
+		/** The properties of the tileset. */
 		public var properties:TiledProperties;
+		/** The tileset image. */
 		public var image:TiledImage;
+		/** A map from terrain name to terrains contained within this tileset. */
 		public var terrain:Object;
+		/** A map from gid to tile for all the non-standard tiles in the tileset. */
 		public var tiles:Object;
 		
 		public function TiledTileset(tmx:XML) {
@@ -31,6 +44,12 @@ package net.axgl.lib.tiled {
 			tiles = loadTiles(tmx.tile);
 		}
 		
+		/**
+		 * Given a tileset, loads all the terrains from the terraintypes object.
+		 * 
+		 * @param tmx The terraintypes object.
+		 * @return The map from terrain name to terrain.
+		 */
 		private static function loadTerrain(tmx:XMLList):Object {
 			var terrain:Object = {};
 			
@@ -42,6 +61,12 @@ package net.axgl.lib.tiled {
 			return terrain;
 		}
 		
+		/**
+		 * Given a list of tiles, builds a map from gid to tile.
+		 * 
+		 * @param tmx The XMLList of <tile> objects.
+		 * @return The map from gid to tiles.
+		 */
 		private static function loadTiles(tmx:XMLList):Object {
 			var tiles:Object = {};
 			
