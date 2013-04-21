@@ -1,5 +1,6 @@
 package net.axgl.moon.world {
-	import net.axgl.lib.tiled.TiledObject;
+	import io.arkeus.tiled.TiledObject;
+	
 	import net.axgl.moon.entity.Player;
 
 	public class ObjectHandler {

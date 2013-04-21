@@ -1,10 +1,11 @@
 package net.axgl.moon.world {
-	import net.axgl.lib.tiled.TiledLayer;
-	import net.axgl.lib.tiled.TiledMap;
-	import net.axgl.lib.tiled.TiledObjectLayer;
-	import net.axgl.lib.tiled.TiledTile;
-	import net.axgl.lib.tiled.TiledTileLayer;
-	import net.axgl.lib.tiled.TiledTileset;
+	import io.arkeus.tiled.TiledLayer;
+	import io.arkeus.tiled.TiledMap;
+	import io.arkeus.tiled.TiledObjectLayer;
+	import io.arkeus.tiled.TiledTile;
+	import io.arkeus.tiled.TiledTileLayer;
+	import io.arkeus.tiled.TiledTileset;
+	
 	import net.axgl.moon.assets.Resource;
 	import net.axgl.moon.entity.Player;
 	

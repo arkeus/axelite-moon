@@ -1,6 +1,7 @@
 package net.axgl.moon {
-	import net.axgl.lib.tiled.TiledMap;
-	import net.axgl.lib.tiled.TiledReader;
+	import io.arkeus.tiled.TiledMap;
+	import io.arkeus.tiled.TiledReader;
+	
 	import net.axgl.moon.assets.Map;
 	import net.axgl.moon.world.World;
 	

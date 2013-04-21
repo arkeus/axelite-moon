@@ -30,7 +30,6 @@ package net.axgl.moon.world {
 			
 			for (var i:uint = 1; i <= 16; i++) {
 				tiles[i].collision = i;
-				//tiles[i].oneWay = true;
 			}
 		}
 	}
