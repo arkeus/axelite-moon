@@ -2,6 +2,7 @@ package net.axgl.moon.world {
 	import io.arkeus.tiled.TiledObject;
 	
 	import net.axgl.moon.entity.Player;
+	import net.axgl.moon.world.debug.TraceArea;
 
 	public class ObjectHandler {
 		private var objects:Vector.<TiledObject>;
@@ -20,6 +21,9 @@ package net.axgl.moon.world {
 			switch (object.type) {
 				case "player_spawn":
 					world.add(world.player = new Player(object.x, object.y));
+				break;
+				case "trace_area":
+					world.add(new TraceArea(object));
 				break;
 			}
 		}

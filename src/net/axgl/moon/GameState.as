@@ -3,6 +3,8 @@ package net.axgl.moon {
 	import io.arkeus.tiled.TiledReader;
 	
 	import net.axgl.moon.assets.Map;
+	import net.axgl.moon.assets.Registry;
+	import net.axgl.moon.assets.Resource;
 	import net.axgl.moon.world.World;
 	
 	import org.axgl.Ax;
@@ -16,11 +18,14 @@ package net.axgl.moon {
 			var map:TiledMap = new TiledReader().loadFromEmbedded(Map.WORLD);
 			this.add(world = new World().build(map));
 			Ax.camera.follow(world.player);
+			
+			Registry.game = this;
+			Registry.player = world.player;
 		}
 		
 		override public function update():void {
 			if (Ax.keys.pressed(AxKey.SPACE)) {
-				//world.collision.setGraphic(Resource.COLLISION_TILESET_RED);
+				world.collision.setGraphic(Resource.COLLISION_TILESET_RED);
 			}
 			
 			super.update();
