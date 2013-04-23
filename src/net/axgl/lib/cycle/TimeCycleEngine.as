@@ -45,11 +45,11 @@ package net.axgl.lib.cycle {
 			return Math.floor(time / secondsPerMinute / minutesPerHour / hoursPerDay) % daysPerMonth;
 		}
 		
-		public function months():uint {
+		public function get months():uint {
 			return Math.floor(time / secondsPerMinute / minutesPerHour / hoursPerDay / daysPerMonth) % monthsPerYear;
 		}
 		
-		public function years():uint {
+		public function get years():uint {
 			return Math.floor(time / secondsPerMinute / minutesPerHour / hoursPerDay / daysPerMonth / monthsPerYear);
 		}
 		
