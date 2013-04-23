@@ -2,6 +2,7 @@ package net.axgl.moon {
 	import io.arkeus.tiled.TiledMap;
 	import io.arkeus.tiled.TiledReader;
 	
+	import net.axgl.lib.cycle.TimeCycleEngine;
 	import net.axgl.moon.assets.Map;
 	import net.axgl.moon.assets.Registry;
 	import net.axgl.moon.assets.Resource;
@@ -21,6 +22,8 @@ package net.axgl.moon {
 			
 			Registry.game = this;
 			Registry.player = world.player;
+			
+			this.add(new TimeCycleEngine(0, 36000));
 		}
 		
 		override public function update():void {

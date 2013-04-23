@@ -15,6 +15,7 @@ package {
 		override public function create():void {
 			Ax.debuggerEnabled = true;
 			Ax.debugger.console.reflow(AxDebugConsole.BOTTOM_LEFT_LAYOUT);
+			Ax.debugger.active = true;
 		}
 	}
 }
