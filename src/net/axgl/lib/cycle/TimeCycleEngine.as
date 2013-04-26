@@ -53,19 +53,11 @@ package net.axgl.lib.cycle {
 		
 		private function updateSprite():void {
 			var adjustedTime:Number = hours + minutes / options.minutesPerHour;
-			/*var adjustedTime:Number = (time - (options.hoursPerDay * 3 / 4)) % options.hoursPerDay;
-			if (adjustedTime < 0) {
-				adjustedTime += options.hoursPerDay;
-			}*/
-			trace(adjustedTime);
-			trace("red");
 			color.red = lightSequence.red.getIntensity(adjustedTime);
-			trace("green");
 			color.green = lightSequence.green.getIntensity(adjustedTime);
-			trace("blue");
 			color.blue = lightSequence.blue.getIntensity(adjustedTime);
-			trace("alpha");
 			color.alpha = lightSequence.alpha.getIntensity(adjustedTime);
+			trace("time", adjustedTime, "red", color.red, "green", color.green, "blue", color.blue, "alpha", color.alpha);
 		}
 	}
 }

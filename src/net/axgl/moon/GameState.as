@@ -12,7 +12,6 @@ package net.axgl.moon {
 	import net.axgl.moon.world.World;
 	
 	import org.axgl.Ax;
-	import org.axgl.AxSprite;
 	import org.axgl.AxState;
 	import org.axgl.input.AxKey;
 
@@ -37,7 +36,8 @@ package net.axgl.moon {
 				[[0,0], [6,0], [10,1], [18, 0]],
 				null,
 				[[6,1], [8, 0], [18, 0], [22, 1]],
-				[[9, 0.5], [10, 0], [18, 0], [20, 0.5]]
+				//[[9, 0.5], [10, 0], [18, 0], [20, 0.5]]
+				[[0, 0.5]]
 			));
 			this.add(cycle);
 			this.add(timeDisplay = new TimeDisplay(4, Ax.viewHeight - TimeDisplay.HEIGHT - 2, cycle));
