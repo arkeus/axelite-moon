@@ -51,6 +51,7 @@ package net.axgl.moon.world {
 				applyCollision((layer as TiledTileLayer).data, collisionFlagMap);
 			}
 			this.add(collision);
+			collision.visible = false;
 			collision.initialize();
 			
 			return this;

@@ -22,8 +22,8 @@ Planned Features
 The following is a list of systems that are planned for Axelite Moon. You can think of this as simply a dumping ground for as many random game systems as possible.
 
 * TMX Parsing (Complete) - See [AS3 Tiled Reader](https://github.com/arkeus/as3-tiled-reader AS3 Tiled Reader)
-* Day Night Cycle
-* Time/Date System
+* Day Night Cycle (In Progress)
+* Time/Date System (In Progress)
 * Farming System
 * Friendship System
 * Action Battle System
