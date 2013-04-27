@@ -14,6 +14,7 @@ package net.axgl.moon {
 	import org.axgl.Ax;
 	import org.axgl.AxState;
 	import org.axgl.input.AxKey;
+	import org.axgl.plus.message.AxMessage;
 
 	public class GameState extends AxState {
 		private var world:World;
@@ -21,34 +22,33 @@ package net.axgl.moon {
 		
 		private static var blah:Array = [];
 		
-		private var cow:GameState;
-		
 		override public function create():void {
+			Ax.background.hex = 0xffff0000;
 			var map:TiledMap = new TiledReader().loadFromEmbedded(Map.WORLD);
 			this.add(world = new World().build(map));
 			Ax.camera.follow(world.player);
-			Ax.background.hex = 0xffffffff;
+			//Ax.background.hex = 0xffffffff;
 			
 			Registry.game = this;
 			Registry.player = world.player;
 			
-			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 3600, new TimeCycleLightSequence(
-				[[0,0], [6,0], [10,1], [18, 0]],
-				null,
-				[[6,1], [8, 0], [18, 0], [22, 1]],
-				//[[9, 0.5], [10, 0], [18, 0], [20, 0.5]]
-				[[0, 0.5]]
+			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 36000, new TimeCycleLightSequence(
+				[[0, 0], [6,0], [10, 0.25], [18, 0]],
+				[[0, 0], [8, 0.25], [12, 0]],
+				[[6, 0.1], [8, 0.25], [18, 0.1]],
+				[[9, 0.5], [10, 0.5], [12, 0.5], [18, 0], [20, 0.5]]
 			));
 			this.add(cycle);
 			this.add(timeDisplay = new TimeDisplay(4, Ax.viewHeight - TimeDisplay.HEIGHT - 2, cycle));
 			
-			var c:TimeCycleLightCurve = new TimeCycleLightCurve([[9, 0.5]]);
-			trace(c.getIntensity(5), c.getIntensity(9), c.getIntensity(20));
+			var c:TimeCycleLightCurve = new TimeCycleLightCurve([[0, 0.5], [12, 0], [24, 1]]);
+			//trace(c.getIntensity(0), c.getIntensity(12), c.getIntensity(24));
 		}
 		
 		override public function update():void {
 			if (Ax.keys.pressed(AxKey.SPACE)) {
 				world.collision.setGraphic(Resource.COLLISION_TILESET_RED);
+				AxMessage.show(["This is a message", "And this"]);
 			}
 			
 			super.update();

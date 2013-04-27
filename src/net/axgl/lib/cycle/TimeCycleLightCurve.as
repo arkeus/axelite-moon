@@ -40,7 +40,7 @@ package net.axgl.lib.cycle {
 					right = temp;
 					right.hour = left.hour + points[0].hour;
 					right.intensity = points[0].intensity;
-				} else if (i == 0) {
+				} else if (i == 0 && left.hour != 0) {
 					right = points[i + 1];
 					left = temp;
 					left.hour = points[points.length - 1].hour - 24;
@@ -49,6 +49,7 @@ package net.axgl.lib.cycle {
 					right = points[i + 1];
 				}
 				
+				trace("GET INTENSITY");
 				trace(hour, left.hour, left.intensity, right.hour, right.intensity);
 				if (left.hour == right.hour) {
 					trace(left.intensity);

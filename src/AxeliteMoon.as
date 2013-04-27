@@ -2,7 +2,6 @@ package {
 	import net.axgl.moon.GameState;
 	
 	import org.axgl.Ax;
-	import org.axgl.render.AxColor;
 	import org.axgl.util.debug.AxDebugConsole;
 	
 	[SWF(width = "800", height = "600", backgroundColor = "#000000")]
