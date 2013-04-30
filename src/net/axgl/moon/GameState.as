@@ -32,10 +32,10 @@ package net.axgl.moon {
 			Registry.game = this;
 			Registry.player = world.player;
 			
-			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 36000, new TimeCycleLightSequence(
-				[[0, 0], [6,0], [10, 0.25], [18, 0]],
-				[[0, 0], [8, 0.25], [12, 0]],
-				[[6, 0.1], [8, 0.25], [18, 0.1]],
+			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 18000, new TimeCycleLightSequence(
+				[[0, 0], [6, 0], [10, 0.25], [18, 0]],
+				[[0, 0], [6, 0], [8, 0.25], [12, 0]],
+				[[6, 0.1], [8, 0], [18, 0.1]],
 				[[9, 0.5], [10, 0.5], [12, 0.5], [18, 0], [20, 0.5]]
 			));
 			this.add(cycle);
