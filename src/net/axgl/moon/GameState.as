@@ -13,8 +13,10 @@ package net.axgl.moon {
 	
 	import org.axgl.Ax;
 	import org.axgl.AxState;
+	import org.axgl.AxVector;
 	import org.axgl.input.AxKey;
 	import org.axgl.plus.message.AxMessage;
+	import org.axgl.render.AxColor;
 
 	public class GameState extends AxState {
 		private var world:World;
@@ -32,12 +34,7 @@ package net.axgl.moon {
 			Registry.game = this;
 			Registry.player = world.player;
 			
-			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 18000, new TimeCycleLightSequence(
-				[[0, 0], [6, 0], [10, 0.25], [18, 0]],
-				[[0, 0], [6, 0], [8, 0.25], [12, 0]],
-				[[6, 0.1], [8, 0], [18, 0.1]],
-				[[9, 0.5], [10, 0.5], [12, 0.5], [18, 0], [20, 0.5]]
-			));
+			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 3600, generateLightSequence());
 			this.add(cycle);
 			this.add(timeDisplay = new TimeDisplay(4, Ax.viewHeight - TimeDisplay.HEIGHT - 2, cycle));
 			
@@ -54,6 +51,31 @@ package net.axgl.moon {
 			super.update();
 			
 			Ax.collide(world.player, world.collision);
+		}
+		
+		private static const LIGHT_SEQUENCE_SOURCE:Object = {
+			0: new AxColor(0, 0, 0, 0.5), // TODO: Fix this wraparound bug
+			6: new AxColor(0, 0, 0, 0.5),
+			8: new AxColor(0.5, 0.5, 0, 0.3),
+			10: new AxColor(0.8, 0.8, 0, 0.15),
+			12: new AxColor(1, 1, 0, 0),
+			18: new AxColor(0, 0, 0, 0),
+			22: new AxColor(0, 0, 0, 0.5)
+		};
+		
+		private function generateLightSequence():TimeCycleLightSequence {
+			var sequence:TimeCycleLightSequence = new TimeCycleLightSequence;
+			
+			for (var hourString:String in LIGHT_SEQUENCE_SOURCE) {
+				var hour:int = parseInt(hourString);
+				var color:AxColor = LIGHT_SEQUENCE_SOURCE[hourString] as AxColor;
+				sequence.red.add(hour, color.red);
+				sequence.green.add(hour, color.green);
+				sequence.blue.add(hour, color.blue);
+				sequence.alpha.add(hour, color.alpha);
+			}
+			
+			return sequence;
 		}
 	}
 }
