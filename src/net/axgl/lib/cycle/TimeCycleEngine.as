@@ -57,7 +57,6 @@ package net.axgl.lib.cycle {
 			color.green = lightSequence.green.getIntensity(adjustedTime);
 			color.blue = lightSequence.blue.getIntensity(adjustedTime);
 			color.alpha = lightSequence.alpha.getIntensity(adjustedTime);
-			trace("time", adjustedTime, "red", color.red, "green", color.green, "blue", color.blue, "alpha", color.alpha);
 		}
 	}
 }
