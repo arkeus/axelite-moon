@@ -49,13 +49,9 @@ package net.axgl.lib.cycle {
 					right = points[i + 1];
 				}
 				
-				trace("GET INTENSITY");
-				trace(hour, left.hour, left.intensity, right.hour, right.intensity);
 				if (left.hour == right.hour) {
-					trace(left.intensity);
 					return left.intensity;
 				}
-				trace(left.intensity + (right.intensity - left.intensity) * ((hour - left.hour) / (right.hour - left.hour)));
 				return left.intensity + (right.intensity - left.intensity) * ((hour - left.hour) / (right.hour - left.hour));
 			}
 			
