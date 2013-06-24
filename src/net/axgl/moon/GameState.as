@@ -8,6 +8,7 @@ package net.axgl.moon {
 	import net.axgl.moon.assets.Map;
 	import net.axgl.moon.assets.Registry;
 	import net.axgl.moon.assets.Resource;
+	import net.axgl.moon.lib.cycle.TimeCycleSource;
 	import net.axgl.moon.ui.TimeDisplay;
 	import net.axgl.moon.world.World;
 	
@@ -29,12 +30,11 @@ package net.axgl.moon {
 			var map:TiledMap = new TiledReader().loadFromEmbedded(Map.WORLD);
 			this.add(world = new World().build(map));
 			Ax.camera.follow(world.player);
-			//Ax.background.hex = 0xffffffff;
 			
 			Registry.game = this;
 			Registry.player = world.player;
 			
-			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 3600, generateLightSequence());
+			var cycle:TimeCycleEngine = new TimeCycleEngine(0, 3600, new TimeCycleSource().generateLightSequence());
 			this.add(cycle);
 			this.add(timeDisplay = new TimeDisplay(4, Ax.viewHeight - TimeDisplay.HEIGHT - 2, cycle));
 			
@@ -51,31 +51,6 @@ package net.axgl.moon {
 			super.update();
 			
 			Ax.collide(world.player, world.collision);
-		}
-		
-		private static const LIGHT_SEQUENCE_SOURCE:Object = {
-			0: new AxColor(0, 0, 0, 0.5), // TODO: Fix this wraparound bug
-			6: new AxColor(0, 0, 0, 0.5),
-			8: new AxColor(0.5, 0.5, 0, 0.3),
-			10: new AxColor(0.8, 0.8, 0, 0.15),
-			12: new AxColor(1, 1, 0, 0),
-			18: new AxColor(0, 0, 0, 0),
-			22: new AxColor(0, 0, 0, 0.5)
-		};
-		
-		private function generateLightSequence():TimeCycleLightSequence {
-			var sequence:TimeCycleLightSequence = new TimeCycleLightSequence;
-			
-			for (var hourString:String in LIGHT_SEQUENCE_SOURCE) {
-				var hour:int = parseInt(hourString);
-				var color:AxColor = LIGHT_SEQUENCE_SOURCE[hourString] as AxColor;
-				sequence.red.add(hour, color.red);
-				sequence.green.add(hour, color.green);
-				sequence.blue.add(hour, color.blue);
-				sequence.alpha.add(hour, color.alpha);
-			}
-			
-			return sequence;
 		}
 	}
 }
